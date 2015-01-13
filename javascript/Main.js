@@ -93,22 +93,27 @@ var ReBeat = {
 		var album;
 		var src;
 
-		if(e.target.nodeName == "IMG"){
-			list_item = e.target.parentNode.parentNode;
+		if($(".addB").length) {
+					
 		}
 		else{
-			if(e.target.nodeName == "P"){
-				list_item = e.target.parentNode;
+			if(e.target.nodeName == "IMG"){
+				list_item = e.target.parentNode.parentNode;
 			}
-			else list_item = e.target;
-		}
-		
-		name = list_item.getAttribute("data-name");
-		album = list_item.getAttribute("data-album");
-		
-		src = aux.spotifyPlayLink(name, album, 0);
+			else{
+				if(e.target.nodeName == "P"){
+					list_item = e.target.parentNode;
+				}
+				else list_item = e.target;
+			}
+			
+			name = list_item.getAttribute("data-name");
+			album = list_item.getAttribute("data-album");
+			
+			src = aux.spotifyPlayLink(name, album, 0);
 
-		aux.embeding(src);
+			aux.embeding(src);
+		}
 	},
 
 	/**CREATE FIGURES WHEN NEEDED**/
@@ -431,6 +436,7 @@ var Menu = {
 		}
 
 		$(".addB").on('click', function(){
+			console.log("primer afegir");
 			bt = this.getAttribute("id");
 			aux = bt.split("-");
 			Menu.PlayListManager(aux[0],list);
